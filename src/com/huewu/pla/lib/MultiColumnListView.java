@@ -84,7 +84,8 @@ public class MultiColumnListView extends PLA_ListView {
             }
 
             mColumnPaddingLeft = a.getDimensionPixelSize(R.styleable.PinterestLikeAdapterView_plaColumnPaddingLeft, 0);
-            mColumnPaddingRight = a.getDimensionPixelSize(R.styleable.PinterestLikeAdapterView_plaColumnPaddingRight, 0);
+            mColumnPaddingRight = a
+                    .getDimensionPixelSize(R.styleable.PinterestLikeAdapterView_plaColumnPaddingRight, 0);
             a.recycle();
         }
 
@@ -339,6 +340,16 @@ public class MultiColumnListView extends PLA_ListView {
 
     public int getColumnNumber() {
         return mColumnNumber;
+    }
+
+    public void setColumnNumber(int columnNumber) {
+        mColumnNumber = columnNumber;
+
+        mColumns = new Column[getColumnNumber()];
+        for (int i = 0; i < getColumnNumber(); ++i)
+            mColumns[i] = new Column(i);
+
+        mItems.clear();
     }
 
     private class Column {
